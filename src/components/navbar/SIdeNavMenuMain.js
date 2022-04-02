@@ -1,7 +1,6 @@
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import {
-  Box,
   CssBaseline,
   Divider,
   IconButton,
@@ -100,7 +99,7 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <>
       <CssBaseline />
       <AppBar position="fixed" open={open} color="primary">
         <Toolbar>
@@ -180,6 +179,6 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-    </Box>
+    </>
   );
 }
