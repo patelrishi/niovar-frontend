@@ -20,6 +20,7 @@ import MultipleSelect from "../common/select/MultipleSelect";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import LocalPrintshopRoundedIcon from '@mui/icons-material/LocalPrintshopRounded';
 const DashboardMain = () => {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -30,8 +31,9 @@ const DashboardMain = () => {
   }));
   const useStyles = makeStyles((theme) => ({
     textFieldRoot: {
-      margin: "0",
-      border: "solid",
+      margin: 0,
+      backgroundColor: "#ffffff",
+      padding: 16,
     },
     changeDate: {
       margin: "0",
@@ -39,6 +41,9 @@ const DashboardMain = () => {
     },
     overlay1: {
       backgroundImage: `url("https://test.niovar.ca/bundles/LpaCdt/dist/img/overlay.jpg")`,
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
       height: "140px",
       backgroundPosition: "center",
       borderTopLeftRadius: "8px",
@@ -69,7 +74,7 @@ const DashboardMain = () => {
         },
       },
     },
-    forwardDate:{
+    forwardDate: {
       display: "flex",
       justifyContent: "center",
     },
@@ -96,6 +101,9 @@ const DashboardMain = () => {
       "&>span": {
         marginRight: "5px",
       },
+    },
+    cardGroup: {
+      marginTop: 4,
     },
   }));
 
@@ -133,9 +141,29 @@ const DashboardMain = () => {
                 </Box>
 
                 <Box className={classes.forwardDate}>
-                  <ArrowCircleLeftIcon style={{color:"#dde6d9",cursor:"pointer",fontSize:"20px"}} />
-                  <span style={{fontSize:"14px",color:"#fff",margin:"0 8px 0 8px"}}>10-04-2022 / 16-04-2022</span>
-                  <ArrowCircleRightIcon style={{color:"#dde6d9",cursor:"pointer",fontSize:"20px"}}/>
+                  <ArrowCircleLeftIcon
+                    style={{
+                      color: "#dde6d9",
+                      cursor: "pointer",
+                      fontSize: "20px",
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: "14px",
+                      color: "#fff",
+                      margin: "0 8px 0 8px",
+                    }}
+                  >
+                    10-04-2022 / 16-04-2022
+                  </span>
+                  <ArrowCircleRightIcon
+                    style={{
+                      color: "#dde6d9",
+                      cursor: "pointer",
+                      fontSize: "20px",
+                    }}
+                  />
                 </Box>
               </Box>
               <Box>
@@ -143,115 +171,115 @@ const DashboardMain = () => {
               </Box>
             </Box>
           </section>
-        </Box>
-      </section>
+          <Grid container spacing={1} className={classes.cardGroup}>
+            <Grid item lg={3} md={6} xs={12}>
+              <Card
+                sx={{
+                  backgroundColor: "#f39c12",
+                  borderRadius: "12px",
+                  color: "#fff",
+                }}
+              >
+                <CardActionArea sx={{ padding: "20px" }}>
+                  <CardMedia height="140" alt="green iguana" />
 
-      <section>
-        <Box>
-          <Box className={classes.card}>
-            <Card
-              sx={{
-                minWidth: "24.65%",
-                backgroundColor: "#f39c12",
-                borderRadius: "12px",
-                color: "#fff",
-              }}
-            >
-              <CardActionArea sx={{ padding: "20px" }}>
-                <CardMedia height="140" alt="green iguana" />
-
-                <H3>$801</H3>
-                <H6>Estimate</H6>
-                <H6>Gross Salary to be paid</H6>
-                <Box className={classes.icon}>
-                  <AccessTimeIcon
-                    sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
-                  />
+                  <H3>$801</H3>
+                  <H6>Estimate</H6>
+                  <H6>Gross Salary to be paid</H6>
+                  <Box className={classes.icon}>
+                    <AccessTimeIcon
+                      sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
+                    />
+                  </Box>
+                </CardActionArea>
+                <Box className={classes.more}>
+                  <span>Read more</span>
+                  <AddCircleIcon />
                 </Box>
-              </CardActionArea>
-              <Box className={classes.more}>
-                <span>Read more</span>
-                <AddCircleIcon />
-              </Box>
-            </Card>
+              </Card>
+            </Grid>
+            <Grid item lg={3} md={6} xs={12}>
+              <Card
+                sx={{
+                  backgroundColor: "#00a65a",
+                  borderRadius: "12px",
+                  color: "#fff",
+                }}
+              >
+                <CardActionArea sx={{ padding: "20px" }}>
+                  <CardMedia height="140" alt="green iguana" />
 
-            <Card
-              sx={{
-                minWidth: "24.65%",
-                backgroundColor: "#00a65a",
-                borderRadius: "12px",
-                color: "#fff",
-              }}
-            >
-              <CardActionArea sx={{ padding: "20px" }}>
-                <CardMedia height="140" alt="green iguana" />
-
-                <H3>$0</H3>
-                <H6>Estimate</H6>
-                <H6>Net salary payable</H6>
-                <Box className={classes.icon}>
-                  <AccessTimeIcon
-                    sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
-                  />
+                  <H3>$0</H3>
+                  <H6>Estimate</H6>
+                  <H6>Net salary payable</H6>
+                  <Box className={classes.icon}>
+                    <AccessTimeIcon
+                      sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
+                    />
+                  </Box>
+                </CardActionArea>
+                <Box className={classes.more}>
+                  <span>Read more</span>
+                  <AddCircleIcon />
                 </Box>
-              </CardActionArea>
-              <Box className={classes.more}>
-                <span>Read more</span>
-                <AddCircleIcon />
-              </Box>
-            </Card>
+              </Card>
+            </Grid>
+            <Grid item lg={3} md={6} xs={12}>
+              <Card
+                sx={{
+                  backgroundColor: "#dd4b39",
+                  borderRadius: "12px",
+                  color: "#fff",
+                }}
+              >
+                <CardActionArea sx={{ padding: "20px" }}>
+                  <CardMedia height="140" alt="green iguana" />
 
-            <Card
-              sx={{
-                minWidth: "24.65%",
-                backgroundColor: "#dd4b39",
-                borderRadius: "12px",
-                color: "#fff",
-              }}
-            >
-              <CardActionArea sx={{ padding: "20px" }}>
-                <CardMedia height="140" alt="green iguana" />
-
-                <H3>2</H3>
-                <H6>Active</H6>
-                <H6>Employee</H6>
-                <Box className={classes.icon}>
-                  <AccessTimeIcon
-                    sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
-                  />
+                  <H3>2</H3>
+                  <H6>Active</H6>
+                  <H6>Employee</H6>
+                  <Box className={classes.icon}>
+                    <AccessTimeIcon
+                      sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
+                    />
+                  </Box>
+                </CardActionArea>
+                <Box className={classes.more}>
+                  <span>Read more</span>
+                  <AddCircleIcon />
                 </Box>
-              </CardActionArea>
-              <Box className={classes.more}>
-                <span>Read more</span>
-                <AddCircleIcon />
-              </Box>
-            </Card>
+              </Card>
+            </Grid>
+            <Grid item lg={3} md={6} xs={12}>
+              <Card
+                sx={{
+                  backgroundColor: "#605ca8 ",
+                  borderRadius: "12px",
+                  color: "#fff",
+                }}
+              >
+                <CardActionArea sx={{ padding: "20px" }}>
+                  <CardMedia height="140" alt="green iguana" />
 
-            <Card
-              sx={{
-                minWidth: "24.65%",
-                backgroundColor: "#605ca8 ",
-                borderRadius: "12px",
-                color: "#fff",
-              }}
-            >
-              <CardActionArea sx={{ padding: "20px" }}>
-                <CardMedia height="140" alt="green iguana" />
-
-                <H3>141</H3>
-                <H6>Employees</H6>
-                <H6>Without Hours</H6>
-                <Box className={classes.icon}>
-                  <AccessTimeIcon
-                    sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
-                  />
+                  <H3>141</H3>
+                  <H6>Employees</H6>
+                  <H6>Without Hours</H6>
+                  <Box className={classes.icon}>
+                    <AccessTimeIcon
+                      sx={{ fontSize: "70px", color: "rgba(0, 0, 0, 0.15)" }}
+                    />
+                  </Box>
+                </CardActionArea>
+                <Box className={classes.more}>
+                  <span>Read more</span>
+                  <AddCircleIcon />
                 </Box>
-              </CardActionArea>
-              <Box className={classes.more}>
-                <span>Read more</span>
-                <AddCircleIcon />
-              </Box>
-            </Card>
+              </Card>
+            </Grid>
+          </Grid>
+          <Box style={{textAlign:"center",marginTop:26}}>
+         <Button variant="contained">Print <LocalPrintshopRoundedIcon/></Button>
+         <Button variant="contained" style={{backgroundColor:"#00c0ef",marginLeft:5}}>Downlod All Timetable</Button>
           </Box>
         </Box>
       </section>
