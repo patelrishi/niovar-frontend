@@ -5,6 +5,7 @@ import DashboardMain from "../components/dashboard/DashboardMain";
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 50,
+    // maxWidth:"1220px"
   },
 }));
 
