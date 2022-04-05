@@ -13,7 +13,7 @@ const Routers = () => {
     <Suspense fallback={"Loading"}>
       <Box sx={{ display: "flex" }}>
         <SIdeNavMenuMain />
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Box component="main" sx={{ flexGrow: 1, overflow: "hidden" }}>
           <Router>
             <Routes>
               {/* public routes */}
