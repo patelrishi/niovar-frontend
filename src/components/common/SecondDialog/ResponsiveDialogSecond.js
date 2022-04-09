@@ -38,6 +38,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
 import CloseIcon from '@mui/icons-material/Close';
 import TableDialog from "./TableDialog";
+import { Dateselect, MultipleSelectEmploye } from "../select/MultipleSelect";
 const blue = {
   500: "#007FFF",
 };
@@ -182,6 +183,13 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 5,
     },
   },
+  date:{
+    "&>div":{
+      "&>div":{
+        width:235,
+      }
+    }
+  }
 }));
 
 const ITEM_HEIGHT = 48;
@@ -303,7 +311,11 @@ export default function ResponsiveDialogSecond() {
                       Heure de début
                     </FormLabel>
                     
-                    <TextField
+                    <div className={classes.date}>
+                    <MultipleSelectEmploye/>
+                      </div>
+
+                    {/* <TextField
                       id="outlined-number"
                       type="text"
                       className="durationTXT"
@@ -321,7 +333,7 @@ export default function ResponsiveDialogSecond() {
                           </InputAdornment>
                         ),
                       }}
-                    />
+                    /> */}
                     
                    
                   </LocalizationProvider>
@@ -356,7 +368,14 @@ export default function ResponsiveDialogSecond() {
                       <QueryBuilderIcon />
                       Heure de début
                     </FormLabel>
-                    <TextField
+
+
+                    
+                    <div className={classes.date}>
+                      <MultipleSelectEmploye/>
+                      </div>
+
+                    {/* <TextField
                       id="outlined-number"
                       type="text"
                       className="durationTXT"
@@ -373,7 +392,7 @@ export default function ResponsiveDialogSecond() {
                           </InputAdornment>
                         ),
                       }}
-                    />
+                    /> */}
                   </LocalizationProvider>
                 </Grid>
               </Grid>
@@ -445,7 +464,7 @@ export default function ResponsiveDialogSecond() {
              
             
             </Grid>
-            <Grid item sm={5}>
+            <Grid item sm={6}>
               
               <TableDialog />
             </Grid>
