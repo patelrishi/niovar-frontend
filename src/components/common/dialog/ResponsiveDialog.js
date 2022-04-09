@@ -20,7 +20,7 @@ import SwitchUnstyled, {
 } from "@mui/base/SwitchUnstyled";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 
-import { styled } from "@mui/system";
+import { Box, height, styled } from "@mui/system";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -37,6 +37,7 @@ import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
 import CloseIcon from "@mui/icons-material/Close";
+import { Dateselect, MultipleSelectEmploye } from "../select/MultipleSelect";
 const blue = {
   500: "#007FFF",
 };
@@ -176,6 +177,14 @@ const useStyles = makeStyles((theme) => ({
       marginRight: 5,
     },
   },
+  date: {
+    "&>div": {
+      "&>div": {
+        width: 235,
+        // height:10
+      },
+    },
+  },
 }));
 
 const ITEM_HEIGHT = 48;
@@ -217,6 +226,7 @@ export default function ResponsiveDialog() {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
+  const [counter, setCounter] = React.useState(0);
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -239,6 +249,11 @@ export default function ResponsiveDialog() {
 
   const onChange = (event) => {
     setValued(event.target.value);
+  };
+
+  const handleCounter = () => {
+    console.log("click");
+    setCounter((counter += 1));
   };
 
   return (
@@ -303,25 +318,9 @@ export default function ResponsiveDialog() {
                       Heure de début
                     </FormLabel>
 
-                    <TextField
-                      id="outlined-number"
-                      type="text"
-                      className="durationTXT"
-                      onChange={onChange}
-                      value={valued}
-                      size="small"
-                      style={{ borderRadius: "30px" }}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <div className="arrow">
-                              <ArrowDropUpIcon style={{ height: "20px" }} />
-                              <ArrowDropDownIcon style={{ height: "20px" }} />
-                            </div>
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
+                    <div className={classes.date}>
+                      <MultipleSelectEmploye />
+                    </div>
                   </LocalizationProvider>
                 </Grid>
                 <Grid item sm={6}>
@@ -353,24 +352,10 @@ export default function ResponsiveDialog() {
                       <QueryBuilderIcon />
                       Heure de début
                     </FormLabel>
-                    <TextField
-                      id="outlined-number"
-                      type="text"
-                      className="durationTXT"
-                      onChange={onChange}
-                      value={valued}
-                      size="small"
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <div className="arrow">
-                              <ArrowDropUpIcon style={{ height: "20px" }} />
-                              <ArrowDropDownIcon style={{ height: "20px" }} />
-                            </div>
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
+
+                    <div className={classes.date}>
+                      <MultipleSelectEmploye />
+                    </div>
                   </LocalizationProvider>
                 </Grid>
               </Grid>
@@ -468,7 +453,7 @@ export default function ResponsiveDialog() {
                   marginBottom: "65px",
                 }}
               >
-                <img src="./info.png"></img>
+                <img src="./image/info.png"></img>
                 <InputLabel id="demo-multiple-name-label">Aide</InputLabel>
               </div>
 

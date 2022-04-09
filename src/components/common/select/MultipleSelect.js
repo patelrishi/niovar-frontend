@@ -30,37 +30,42 @@ const names = [
   'Kelly Snyder',
 ];
 
+
+const time=[
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  "00:15",
+  
+
+]
+
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
       personName.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
-
   };
 }
 
+
 export default function MultipleSelect() {
-  const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
-  };
-
   return (
     <div>
       <select style={{
             backgroundColor: "#395c9b",
             color:"#fff",
     marginbottom: "11px",
-    width: "200px"}}>
+    height:"27px",
+    width: "300px"}}>
       
       {names.map((name) => (
            <option
@@ -78,7 +83,31 @@ export default function MultipleSelect() {
           ))}
        
       </select>
-      {/* <FormControl sx={{ m: 1, width: 200,height:"20px",background:"#395c9b" }}>
+    
+    </div>
+  );
+}
+
+
+
+
+export function MultipleSelectEmploye() {
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+
+  return (
+    <div>
+       <FormControl sx={{ m: 1, width: 300 }}>
         <InputLabel id="demo-multiple-name-label">Name</InputLabel>
         <Select
           labelId="demo-multiple-name-label"
@@ -99,7 +128,46 @@ export default function MultipleSelect() {
             </MenuItem>
           ))}
         </Select>
-      </FormControl> */}
+      </FormControl>
     </div>
   );
+}
+
+export function Dateselect(){
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+  <div>
+       <FormControl sx={{ m: 1, width: 300 }}>
+        <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+        <Select
+          labelId="demo-multiple-name-label"
+          id="demo-multiple-name"
+          multiple
+          value={personName}
+          onChange={handleChange}
+          input={<OutlinedInput label="Name" />}
+          MenuProps={MenuProps}
+        >
+          {time.map((time) => (
+            <MenuItem
+              key={time}
+              value={time}
+              // style={getStyles(time, personName, theme)}
+            >
+              {time}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </div>
 }

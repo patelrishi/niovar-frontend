@@ -7,13 +7,30 @@ import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
+import { MultipleSelectEmploye } from "../select/MultipleSelect";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles((theme) => ({
+  date:{
+    "&>div":{
+      "&>div":{
+        width:135,
+        "&>div":{
+          height:50
+        }
+      }
+    }
+  }
+}))
+
+
 function TableDialog() {
-  
-  const [counter, setcounter] = useState(1);
- 
-const increment = ()=>{
-  setcounter(counter + 1)
-}
+  const classes = useStyles();
+  const [noOfRows, setNoOfRows] = useState(1);
+ const handleAddRow =()=>{
+  setNoOfRows(noOfRows + 1)
+ }
+
   return (
     <div>
       <div
@@ -41,7 +58,7 @@ const increment = ()=>{
               marginRight: "5px",
               fontWeight: "bold",
             }}
-            onClick={()=>increment()}
+            onClick={handleAddRow}
           >
             +
           </button>
@@ -55,47 +72,29 @@ const increment = ()=>{
         <div style={{ width: "20%" }}>Options</div>
       </div>
 
-      {new Array(counter).fill("").map((e) => (
-        <div className="first">
-          <div style={{ width: "10%" }}>
-            <img src={`${process.env.PUBLIC_URL}/image/cancel.png`} alt="" style={{ marginTop: "10px" }} />
+      {[...Array(noOfRows)].map((elementInArray, index)  => {
+
+        return(
+  <div className="first">
+          <div onClick={() => setNoOfRows(noOfRows - 1)} style={{ width: "10%" }}>
+            <img src={`${process.env.PUBLIC_URL}/image/cancel.png`} alt="" style={{ marginTop: "10px" }}   />
           </div>
           <div style={{ width: "30%" }}>
-            <TextField
-              id="outlined-number"
-              type="text"
             
-              size="small"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <div className="arrow">
-                      <ArrowDropUpIcon style={{ height: "20px" }} />
-                      <ArrowDropDownIcon style={{ height: "20px" }} />
-                    </div>
-                  </InputAdornment>
-                ),
-              }}
-            />
+<div className={classes.date}>
+                      <MultipleSelectEmploye/>
+                      </div>
+
+
           </div>
 
           <div style={{ width: "30%" }}>
-            <TextField
-              id="outlined-number"
-              type="text"
+
             
-              size="small"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <div className="arrow">
-                      <ArrowDropUpIcon style={{ height: "20px" }} />
-                      <ArrowDropDownIcon style={{ height: "20px" }} />
-                    </div>
-                  </InputAdornment>
-                ),
-              }}
-            />
+<div className={classes.date}>
+                      <MultipleSelectEmploye/>
+                      </div>
+          
           </div>
 
           <div style={{ width: "20%" }}>
@@ -111,7 +110,9 @@ const increment = ()=>{
             </FormGroup>
           </div>
         </div>
-      ))}
+        )
+      
+      })}
     </div>
   );
 }

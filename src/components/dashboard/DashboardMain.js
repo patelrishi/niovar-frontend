@@ -1,4 +1,11 @@
-import { Box, ClickAwayListener, Grid, Tooltip } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  TextField,
+  Tooltip,
+  ClickAwayListener,
+} from "@mui/material";
 import React from "react";
 import Button from "@mui/material/Button";
 import { H2, H3, H6 } from "../common/typography/Header";
@@ -13,18 +20,41 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { CardActionArea } from "@mui/material";
-import MultipleSelect from "../common/select/MultipleSelect";
+import { fontSize, padding, textAlign } from "@mui/system";
+import BasicTable from "../common/table/StickyHeadTable";
+import MultipleSelect, {
+  MultipleSelectEmploye,
+} from "../common/select/MultipleSelect";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 import LocalPrintshopRoundedIcon from "@mui/icons-material/LocalPrintshopRounded";
-
+import AlignHorizontalLeftIcon from "@mui/icons-material/AlignHorizontalLeft";
 const DashboardMain = () => {
+  const [showResults, setShowResults] = React.useState(true);
+  const onClick = () => setShowResults(!showResults);
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
   const useStyles = makeStyles((theme) => ({
     textFieldRoot: {
       margin: 0,
       backgroundColor: "#ffffff",
       padding: 16,
+      "&:nth-child(1)": {
+        "&>div": {
+          "&>div": {
+            "&>div": {
+              // height: 50,
+            },
+          },
+        },
+      },
     },
     changeDate: {
       margin: "0",
@@ -60,7 +90,6 @@ const DashboardMain = () => {
         border: "1px solid transparent",
         textAlign: "center",
         "&>svg": {
-          // fontSize:"5px",
           marginRight: "5px",
         },
       },
@@ -96,6 +125,17 @@ const DashboardMain = () => {
     },
     cardGroup: {
       marginTop: 4,
+    },
+    date: {
+      "&>div": {
+        "&>div": {
+          width: 200,
+
+          "&>div": {
+            height: 50,
+          },
+        },
+      },
     },
   }));
 
@@ -155,8 +195,47 @@ const DashboardMain = () => {
             }}
           >
             <H6>Lister les employés par</H6>
-            <Button>+</Button>
+            <Button onClick={onClick}>{showResults ? "-" : "+"}</Button>
           </Box>
+          {showResults && (
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                id="outlined-basic"
+                label="Employee Name"
+                style={{ height: 50 }}
+              />
+
+              <div className={classes.date}>
+                <MultipleSelectEmploye />
+              </div>
+
+              <div className={classes.date}>
+                <MultipleSelectEmploye />
+              </div>
+
+              <div className={classes.date}>
+                <MultipleSelectEmploye />
+              </div>
+              <Button
+                variant="outlined"
+                style={{ backgroundColor: "#423f88", color: "#fff" }}
+              >
+                <AlignHorizontalLeftIcon /> Suggested Hours
+              </Button>
+              <Button
+                variant="outlined"
+                style={{ backgroundColor: "#423f88", color: "#fff" }}
+              >
+                <AlignHorizontalLeftIcon /> Validated Hours
+              </Button>
+            </Box>
+          )}
           <section>
             <Box className={classes.changeDate}>
               <Box className={classes.overlay1}>
