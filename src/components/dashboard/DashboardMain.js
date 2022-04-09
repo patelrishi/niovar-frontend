@@ -1,7 +1,7 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, ClickAwayListener, Grid, Tooltip } from "@mui/material";
 import React from "react";
 import Button from "@mui/material/Button";
-import { H2, H3, H4, H6 } from "../common/typography/Header";
+import { H2, H3, H6 } from "../common/typography/Header";
 import Paper from "@mui/material/Paper";
 
 import { styled } from "@mui/material/styles";
@@ -10,25 +10,16 @@ import { makeStyles } from "@mui/styles";
 import StickyHeadTable from "../common/table/StickyHeadTable";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { CardActionArea } from "@mui/material";
-import { fontSize, padding, textAlign } from "@mui/system";
-import BasicTable from "../common/table/StickyHeadTable";
 import MultipleSelect from "../common/select/MultipleSelect";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import LocalPrintshopRoundedIcon from '@mui/icons-material/LocalPrintshopRounded';
+import LocalPrintshopRoundedIcon from "@mui/icons-material/LocalPrintshopRounded";
+
 const DashboardMain = () => {
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
   const useStyles = makeStyles((theme) => ({
     textFieldRoot: {
       margin: 0,
@@ -90,6 +81,7 @@ const DashboardMain = () => {
       zIndex: "0",
     },
     more: {
+      cursor: "pointer",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -108,6 +100,45 @@ const DashboardMain = () => {
   }));
 
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
+  const [open2, setOpen2] = React.useState(false);
+
+  const handleTooltipClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleTooltipOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const [open3, setOpen3] = React.useState(false);
+
+  const handleTooltipClose3 = () => {
+    setOpen3(false);
+  };
+
+  const handleTooltipOpen3 = () => {
+    setOpen3(true);
+  };
+
+  const [open4, setOpen4] = React.useState(false);
+
+  const handleTooltipClose4 = () => {
+    setOpen4(false);
+  };
+
+  const handleTooltipOpen4 = () => {
+    setOpen4(true);
+  };
 
   return (
     <div>
@@ -192,10 +223,27 @@ const DashboardMain = () => {
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose}
+                      open={open}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Estimation du
+                      Salaire Brut à payer"
+                    >
+                      <Box className={classes.more} onClick={handleTooltipOpen}>
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
             <Grid item lg={3} md={6} xs={12}>
@@ -218,10 +266,30 @@ const DashboardMain = () => {
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose2}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose2}
+                      open={open2}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Estimation du
+                      Salaire Net à payer"
+                    >
+                      <Box
+                        className={classes.more}
+                        onClick={handleTooltipOpen2}
+                      >
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
             <Grid item lg={3} md={6} xs={12}>
@@ -244,10 +312,30 @@ const DashboardMain = () => {
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose3}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose3}
+                      open={open3}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Employé
+                      Actif"
+                    >
+                      <Box
+                        className={classes.more}
+                        onClick={handleTooltipOpen3}
+                      >
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
             <Grid item lg={3} md={6} xs={12}>
@@ -270,16 +358,43 @@ const DashboardMain = () => {
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose4}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose4}
+                      open={open4}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Employé
+                      Sans Horaire"
+                    >
+                      <Box
+                        className={classes.more}
+                        onClick={handleTooltipOpen4}
+                      >
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
           </Grid>
-          <Box style={{textAlign:"center",marginTop:26}}>
-         <Button variant="contained">Print <LocalPrintshopRoundedIcon/></Button>
-         <Button variant="contained" style={{backgroundColor:"#00c0ef",marginLeft:5}}>Downlod All Timetable</Button>
+          <Box style={{ textAlign: "center", marginTop: 26 }}>
+            <Button variant="contained">
+              Print <LocalPrintshopRoundedIcon />
+            </Button>
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#00c0ef", marginLeft: 5 }}
+            >
+              Downlod All Timetable
+            </Button>
           </Box>
         </Box>
       </section>
