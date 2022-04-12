@@ -36,7 +36,7 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import InputAdornment from "@mui/material/InputAdornment";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import { Dateselect, MultipleSelectEmploye } from "../select/MultipleSelect";
 const blue = {
   500: "#007FFF",
@@ -118,7 +118,6 @@ const Root = styled("span")(
 const useStyles = makeStyles((theme) => ({
   root: {
     "&>div>div": {
-  
       minWidth: "60% !important",
       maxWidth: "60%",
     },
@@ -127,15 +126,12 @@ const useStyles = makeStyles((theme) => ({
   popupRoot: {
     overflow: "hidden",
     "&>div>div>div": {
-    
       marginBottom: 8,
-     
     },
   },
   textArea: {
     "&>div": {
       width: "100%",
-     
     },
     "&>label": {
       display: "flex",
@@ -155,7 +151,6 @@ const useStyles = makeStyles((theme) => ({
       width: "80%",
       marginTop: 3,
       marginBottom: "25px",
-      
     },
   },
   timePicker: {
@@ -177,19 +172,19 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     marginTop: 15,
-   
+
     "&>svg": {
       marginRight: 5,
     },
   },
-  date:{
-    "&>div":{
-      "&>div":{
-        width:235,
+  date: {
+    "&>div": {
+      "&>div": {
+        width: 235,
         // height:10
-      }
-    }
-  }
+      },
+    },
+  },
 }));
 
 const ITEM_HEIGHT = 48;
@@ -231,7 +226,7 @@ export default function ResponsiveDialog() {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const [value, setValue] = React.useState(new Date("2014-08-18T21:11:54"));
-  const[counter,setCounter]= React.useState(0);
+  const [counter, setCounter] = React.useState(0);
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -256,16 +251,14 @@ export default function ResponsiveDialog() {
     setValued(event.target.value);
   };
 
-
-const handleCounter=()=>{
-  console.log("click")
-  setCounter(counter+=1)
-}
-
+  const handleCounter = () => {
+    console.log("click");
+    setCounter((counter += 1));
+  };
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen} >
+      <Button variant="contained" onClick={handleClickOpen}>
         <AccessTimeIcon />
       </Button>
       <Dialog
@@ -277,16 +270,23 @@ const handleCounter=()=>{
       >
         <DialogContent className={classes.popupRoot}>
           <Grid container spacing={4}>
-
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",width: "100%",borderBottom:"1px solid  #cbcbcb" }}>
-            <DialogTitle >
-              {" "}
-              Créer un congé pour marc leclerc du département Entretien
-              d'édifice public-Entretien ménager
-            </DialogTitle>
-<CloseIcon onClick={handleClose} style={{cursor:"pointer"}}/>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+                borderBottom: "1px solid  #cbcbcb",
+              }}
+            >
+              <DialogTitle>
+                {" "}
+                Créer un congé pour marc leclerc du département Entretien
+                d'édifice public-Entretien ménager
+              </DialogTitle>
+              <CloseIcon onClick={handleClose} style={{ cursor: "pointer" }} />
             </div>
-         
+
             <Grid item sm={6}>
               <Grid container spacing={2} className={classes.datepicker}>
                 <Grid item sm={6}>
@@ -294,39 +294,33 @@ const handleCounter=()=>{
                     <FormLabel
                       id="demo-row-radio-buttons-group-label"
                       className={classes.icon}
-                      style={{ fontWeight: "bold",
-                      color: "black"}}
-                    
+                      style={{ fontWeight: "bold", color: "black" }}
                     >
                       <CalendarTodayIcon />
                       Date du début
                     </FormLabel>
                     <MobileDatePicker
-                     
                       inputFormat="MM/dd/yyyy"
                       value={value}
                       onChange={handleChange}
-                      renderInput={(params) => <TextField className="dateTXT" {...params} />}
+                      disabled
+                      renderInput={(params) => (
+                        <TextField className="dateTXT" {...params} />
+                      )}
                     />
 
                     <FormLabel
                       id="demo-row-radio-buttons-group-label"
                       className={classes.icon}
-                      style={{ fontWeight: "bold",
-                      color: "black"}}
+                      style={{ fontWeight: "bold", color: "black" }}
                     >
                       <QueryBuilderIcon />
                       Heure de début
                     </FormLabel>
-                  
-                     
-                    <div className={classes.date}>
-                    <MultipleSelectEmploye/>
-                      </div>
-                    
 
-                
-                   
+                    <div className={classes.date}>
+                      <MultipleSelectEmploye />
+                    </div>
                   </LocalizationProvider>
                 </Grid>
                 <Grid item sm={6}>
@@ -334,35 +328,34 @@ const handleCounter=()=>{
                     <FormLabel
                       id="demo-row-radio-buttons-group-label"
                       className={classes.icon}
-                      style={{ fontWeight: "bold",
-                      color: "black"}}
+                      style={{ fontWeight: "bold", color: "black" }}
                     >
                       <CalendarTodayIcon />
                       Date du début
                     </FormLabel>
                     <MobileDatePicker
+                      disabled
                       inputFormat="MM/dd/yyyy"
                       value={value}
                       onChange={handleChange}
-                      style={{ fontWeight: "bold",
-                      color: "black"}}
-                      renderInput={(params) => <TextField className="dateTXT" {...params} />}
+                      style={{ fontWeight: "bold", color: "black" }}
+                      renderInput={(params) => (
+                        <TextField className="dateTXT" {...params} />
+                      )}
                     />
 
                     <FormLabel
                       id="demo-row-radio-buttons-group-label"
                       className={classes.icon}
-                      style={{ fontWeight: "bold",
-                      color: "black"}}
+                      style={{ fontWeight: "bold", color: "black" }}
                     >
                       <QueryBuilderIcon />
                       Heure de début
                     </FormLabel>
 
                     <div className={classes.date}>
-                      <MultipleSelectEmploye/>
-                      </div>
-                   
+                      <MultipleSelectEmploye />
+                    </div>
                   </LocalizationProvider>
                 </Grid>
               </Grid>
@@ -370,23 +363,17 @@ const handleCounter=()=>{
                 <FormLabel
                   id="demo-row-radio-buttons-group-label"
                   className={classes.icon}
-                  style={{ fontWeight: "bold",
-                  color: "black"}}
+                  style={{ fontWeight: "bold", color: "black" }}
                 >
                   <EventIcon />
                   Renouveler ce congé ( optionnel ):
                 </FormLabel>
-                <TextField
-                  id="outlined-basic"
-                  className="optional"
-                />
+                <TextField id="outlined-basic" className="optional" />
 
                 <InputLabel
                   id="demo-multiple-name-label"
                   className={classes.icon}
-                  style={{ fontWeight: "bold",
-                  color: "black"}}
-                  
+                  style={{ fontWeight: "bold", color: "black" }}
                 >
                   {" "}
                   <NotesIcon />
@@ -418,8 +405,7 @@ const handleCounter=()=>{
                 <FormLabel
                   id="demo-row-radio-buttons-group-label"
                   className={classes.icon}
-                  style={{ fontWeight: "bold",
-                  color: "black"}}
+                  style={{ fontWeight: "bold", color: "black" }}
                 >
                   <SegmentIcon />
                   Détails
@@ -431,9 +417,10 @@ const handleCounter=()=>{
                 />
               </div>
 
-              <FormLabel id="demo-row-radio-buttons-group-label"     style={{ fontWeight: "bold",
-                      color: "black"}} >
-                
+              <FormLabel
+                id="demo-row-radio-buttons-group-label"
+                style={{ fontWeight: "bold", color: "black" }}
+              >
                 Type de congé
               </FormLabel>
               <RadioGroup
@@ -459,31 +446,48 @@ const handleCounter=()=>{
               </RadioGroup>
             </Grid>
             <Grid item sm={5}>
-             <div style={{display:"flex",alignItems:"center", marginBottom:"65px"}}>
-             <img src="./image/info.png"></img>
-              <InputLabel id="demo-multiple-name-label">Aide</InputLabel>
-             </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "65px",
+                }}
+              >
+                <img src="./image/info.png"></img>
+                <InputLabel id="demo-multiple-name-label">Aide</InputLabel>
+              </div>
 
               <InputLabel id="demo-multiple-name-label">
                 Quart sur appel:
               </InputLabel>
 
-              <InputLabel style={{whiteSpace: "normal"}}>
+              <InputLabel style={{ whiteSpace: "normal" }}>
                 Le quart défini ici ne sera é!ectif qu'apres une confirmation de
                 l'employeur à l'employé{" "}
               </InputLabel>
-         
             </Grid>
           </Grid>
         </DialogContent>
 
-        <DialogActions style={{borderTop:"1px solid gray",margin: "0px 24px 12px 24px"}}>
+        <DialogActions
+          style={{ borderTop: "1px solid gray", margin: "0px 24px 12px 24px" }}
+        >
           <SwitchUnstyled component={Root} {...label} defaultChecked />
-          <Button variant="text" onClick={handleClose}  style={{backgroundColor:"#c7c7c7",color:"white"}} >Fermer</Button>
-           <Button autoFocus onClick={handleClose} variant="outlined" style={{backgroundColor:"#423f88",color:"white"}}>
-           Enregistrer
-           </Button>
-         
+          <Button
+            variant="text"
+            onClick={handleClose}
+            style={{ backgroundColor: "#c7c7c7", color: "white" }}
+          >
+            Fermer
+          </Button>
+          <Button
+            autoFocus
+            onClick={handleClose}
+            variant="outlined"
+            style={{ backgroundColor: "#423f88", color: "white" }}
+          >
+            Enregistrer
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

@@ -1,24 +1,19 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { Avatar, Button, Grid } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { H2, H3, H4, H6 } from "../../common/typography/Header";
-import HomeIcon from "@mui/icons-material/Home";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { H6 } from "../../common/typography/Header";
 import ResponsiveDialog from "../dialog/ResponsiveDialog";
-
+import LocalPrintshopRoundedIcon from "@mui/icons-material/LocalPrintshopRounded";
 import ResponsiveDialogSecond from "../SecondDialog/ResponsiveDialogSecond";
 // import Tabledialog from "../../table/Tabledialog"
 // import ResponsiveDialog from "../../table/ResponsiveDialog"
 const useStyles = makeStyles((theme) => ({
-
   tabelroot: {
     "&>div": {
       "&>table": {
@@ -283,7 +278,24 @@ export default function StickyHeadTable() {
                     {row.code}
                   </TableCell>
                   <TableCell key={i} align="center">
-                    {row.code}
+                    {/* {row.code} */}
+                    <Button
+                      style={{
+                        background: "#00a65a",
+                        width: "100%",
+                        marginBottom: 8,
+                      }}
+                      variant="contained"
+                    >
+                      publié{" "}
+                    </Button>
+                    <Button
+                      style={{ background: "#00a65a", width: "100%" }}
+                      variant="contained"
+                      startIcon={<LocalPrintshopRoundedIcon />}
+                    >
+                      PDF
+                    </Button>
                   </TableCell>
                 </TableRow>
               );

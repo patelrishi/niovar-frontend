@@ -1,7 +1,14 @@
-import { Box, Container, Grid, TextField } from "@mui/material";
+import {
+  Box,
+  Container,
+  Grid,
+  TextField,
+  Tooltip,
+  ClickAwayListener,
+} from "@mui/material";
 import React from "react";
 import Button from "@mui/material/Button";
-import { H2, H3, H4, H6 } from "../common/typography/Header";
+import { H2, H3, H6 } from "../common/typography/Header";
 import Paper from "@mui/material/Paper";
 
 import { styled } from "@mui/material/styles";
@@ -10,24 +17,22 @@ import { makeStyles } from "@mui/styles";
 import StickyHeadTable from "../common/table/StickyHeadTable";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { CardActionArea } from "@mui/material";
 import { fontSize, padding, textAlign } from "@mui/system";
 import BasicTable from "../common/table/StickyHeadTable";
-import MultipleSelect, { MultipleSelectEmploye } from "../common/select/MultipleSelect";
+import MultipleSelect, {
+  MultipleSelectEmploye,
+} from "../common/select/MultipleSelect";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import LocalPrintshopRoundedIcon from '@mui/icons-material/LocalPrintshopRounded';
-import AlignHorizontalLeftIcon from '@mui/icons-material/AlignHorizontalLeft';
+import LocalPrintshopRoundedIcon from "@mui/icons-material/LocalPrintshopRounded";
+import AlignHorizontalLeftIcon from "@mui/icons-material/AlignHorizontalLeft";
 const DashboardMain = () => {
-
-  const [showResults, setShowResults] = React.useState(true)
-  const onClick = () => setShowResults(!showResults)
-
-
+  const [showResults, setShowResults] = React.useState(true);
+  const onClick = () => setShowResults(!showResults);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -41,6 +46,15 @@ const DashboardMain = () => {
       margin: 0,
       backgroundColor: "#ffffff",
       padding: 16,
+      "&:nth-child(1)": {
+        "&>div": {
+          "&>div": {
+            "&>div": {
+              // height: 50,
+            },
+          },
+        },
+      },
     },
     changeDate: {
       margin: "0",
@@ -96,6 +110,7 @@ const DashboardMain = () => {
       zIndex: "0",
     },
     more: {
+      cursor: "pointer",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -111,20 +126,59 @@ const DashboardMain = () => {
     cardGroup: {
       marginTop: 4,
     },
-    date:{
-      "&>div":{
-        "&>div":{
-          width:200 ,
-          
-          "&>div":{
-            height:50
-          }
-        }
-      }
-    }
+    date: {
+      "&>div": {
+        "&>div": {
+          width: 200,
+
+          "&>div": {
+            height: 50,
+          },
+        },
+      },
+    },
   }));
 
   const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleTooltipClose = () => {
+    setOpen(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setOpen(true);
+  };
+
+  const [open2, setOpen2] = React.useState(false);
+
+  const handleTooltipClose2 = () => {
+    setOpen2(false);
+  };
+
+  const handleTooltipOpen2 = () => {
+    setOpen2(true);
+  };
+
+  const [open3, setOpen3] = React.useState(false);
+
+  const handleTooltipClose3 = () => {
+    setOpen3(false);
+  };
+
+  const handleTooltipOpen3 = () => {
+    setOpen3(true);
+  };
+
+  const [open4, setOpen4] = React.useState(false);
+
+  const handleTooltipClose4 = () => {
+    setOpen4(false);
+  };
+
+  const handleTooltipOpen4 = () => {
+    setOpen4(true);
+  };
 
   return (
     <div>
@@ -141,32 +195,47 @@ const DashboardMain = () => {
             }}
           >
             <H6>Lister les employés par</H6>
-            <Button onClick={onClick}>
-
-            {showResults?"-":"+"}
-
-            </Button>
+            <Button onClick={onClick}>{showResults ? "-" : "+"}</Button>
           </Box>
-{
-showResults &&
-<Box style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-<TextField id="outlined-basic" label="Employee Name"  />
+          {showResults && (
+            <Box
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                id="outlined-basic"
+                label="Employee Name"
+                style={{ height: 50 }}
+              />
 
-<div className={classes.date}>
-                      <MultipleSelectEmploye/>
-                      </div>
+              <div className={classes.date}>
+                <MultipleSelectEmploye />
+              </div>
 
-                      <div className={classes.date}>
-                      <MultipleSelectEmploye/>
-                      </div>
+              <div className={classes.date}>
+                <MultipleSelectEmploye />
+              </div>
 
-                      <div className={classes.date}>
-                      <MultipleSelectEmploye/>
-                      </div>
-<Button  variant="outlined" style={{backgroundColor:"#423f88",color:"#fff"}}><AlignHorizontalLeftIcon/>   Suggested Hours</Button>
-<Button variant="outlined" style={{backgroundColor:"#423f88",color:"#fff"}}><AlignHorizontalLeftIcon/>   Validated Hours</Button>
-</Box>
-}
+              <div className={classes.date}>
+                <MultipleSelectEmploye />
+              </div>
+              <Button
+                variant="outlined"
+                style={{ backgroundColor: "#423f88", color: "#fff" }}
+              >
+                <AlignHorizontalLeftIcon /> Suggested Hours
+              </Button>
+              <Button
+                variant="outlined"
+                style={{ backgroundColor: "#423f88", color: "#fff" }}
+              >
+                <AlignHorizontalLeftIcon /> Validated Hours
+              </Button>
+            </Box>
+          )}
           <section>
             <Box className={classes.changeDate}>
               <Box className={classes.overlay1}>
@@ -233,10 +302,27 @@ showResults &&
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose}
+                      open={open}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Estimation du
+                      Salaire Brut à payer"
+                    >
+                      <Box className={classes.more} onClick={handleTooltipOpen}>
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
             <Grid item lg={3} md={6} xs={12}>
@@ -259,10 +345,30 @@ showResults &&
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose2}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose2}
+                      open={open2}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Estimation du
+                      Salaire Net à payer"
+                    >
+                      <Box
+                        className={classes.more}
+                        onClick={handleTooltipOpen2}
+                      >
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
             <Grid item lg={3} md={6} xs={12}>
@@ -285,10 +391,30 @@ showResults &&
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose3}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose3}
+                      open={open3}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Employé
+                      Actif"
+                    >
+                      <Box
+                        className={classes.more}
+                        onClick={handleTooltipOpen3}
+                      >
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
             <Grid item lg={3} md={6} xs={12}>
@@ -311,16 +437,43 @@ showResults &&
                     />
                   </Box>
                 </CardActionArea>
-                <Box className={classes.more}>
-                  <span>Read more</span>
-                  <AddCircleIcon />
-                </Box>
+                <ClickAwayListener onClickAway={handleTooltipClose4}>
+                  <div>
+                    <Tooltip
+                      PopperProps={{
+                        disablePortal: true,
+                      }}
+                      onClose={handleTooltipClose4}
+                      open={open4}
+                      disableFocusListener
+                      disableHoverListener
+                      disableTouchListener
+                      title="Employé
+                      Sans Horaire"
+                    >
+                      <Box
+                        className={classes.more}
+                        onClick={handleTooltipOpen4}
+                      >
+                        <span>Read more</span>
+                        <AddCircleIcon />
+                      </Box>
+                    </Tooltip>
+                  </div>
+                </ClickAwayListener>
               </Card>
             </Grid>
           </Grid>
-          <Box style={{textAlign:"center",marginTop:26}}>
-         <Button variant="contained">Print <LocalPrintshopRoundedIcon/></Button>
-         <Button variant="contained" style={{backgroundColor:"#00c0ef",marginLeft:5}}>Downlod All Timetable</Button>
+          <Box style={{ textAlign: "center", marginTop: 26 }}>
+            <Button variant="contained">
+              Print <LocalPrintshopRoundedIcon />
+            </Button>
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#00c0ef", marginLeft: 5 }}
+            >
+              Downlod All Timetable
+            </Button>
           </Box>
         </Box>
       </section>
