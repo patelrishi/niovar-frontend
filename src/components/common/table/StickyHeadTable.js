@@ -11,6 +11,8 @@ import { H6 } from "../../common/typography/Header";
 import ResponsiveDialog from "../dialog/ResponsiveDialog";
 import LocalPrintshopRoundedIcon from "@mui/icons-material/LocalPrintshopRounded";
 import ResponsiveDialogSecond from "../SecondDialog/ResponsiveDialogSecond";
+import FreeBreakfastIcon from '@mui/icons-material/FreeBreakfast';
+import CircleIcon from '@mui/icons-material/Circle';
 // import Tabledialog from "../../table/Tabledialog"
 // import ResponsiveDialog from "../../table/ResponsiveDialog"
 const useStyles = makeStyles((theme) => ({
@@ -69,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonGroup: {
     display: "flex",
+    
     "&>div": {
       "&:nth-child(1)": {
         marginRight: "10px",
@@ -95,6 +98,21 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  greencard:{
+    height:"162px",
+    fontSize: "12px",
+    borderRadius: "4px",
+    padding: "3px",
+    marginBottom: "5px",
+    lineHeight: "14px",
+    border: 0,
+    // color: "#ffffff",
+    textDecoration: "none",
+    marginTop: "5%",
+    background: "#46d133",
+    color:"#4d4d57"
+  },
+
 }));
 
 const columns = [
@@ -156,16 +174,12 @@ const columns = [
   },
 ];
 
-function createData(name, code, population, size) {
+function createData(name, code, GreenCard) {
   console.log(
-    name,
-    code,
-    population,
-    size,
-    "================================>"
+    name, code,GreenCard
   );
   // const density = population / size;
-  return { name, code, population, size };
+  return { name, code, GreenCard };
 }
 
 const UserTableProfile = ({ name = "" }) => {
@@ -188,16 +202,44 @@ const UserButtonGroup = ({ name = "" }) => {
   );
 };
 
+const GreenCard =()=>{
+  const classes = useStyles();
+  return (
+    <div className={classes.greencard}>
+      <div style={{marginBottom:"5px", marginTop:"10px"}}>
+      6:30 - 16:00
+      </div>
+      <div style={{marginBottom:"5px"}}>
+      sodec
+      </div>
+      <div style={{marginBottom:"5px"}}>
+      Patrick Marshal
+      </div>
+      <div style={{borderBottom:"1px solid #fff" }}>
+        <div style={{display:"flex",alignItems:"center",height:"20px"}}><FreeBreakfastIcon fontSize="12px" style ={{marginRight:"5px"}}/><p>0:15</p></div>
+        <div style={{display:"flex",alignItems:"center",height:"20px"}}><FreeBreakfastIcon  fontSize="12px"style ={{marginRight:"5px"}}/><p>0:15</p></div>
+        <div style={{display:"flex",alignItems:"center",height:"20px"}}><FreeBreakfastIcon  fontSize="12px"style ={{marginRight:"5px"}}/><p>0:15</p></div>
+      </div>
+      <div style={{marginTop:"5px",textAlign:"start"}}>
+<CircleIcon fontSize="12px"/>
+      </div>
+    </div>
+  )
+};
+
+
 export default function StickyHeadTable() {
   const classes = useStyles();
   const rows = [
     createData(
       <UserTableProfile name="Koré Germaine Groguh.." />,
-      <UserButtonGroup />
+      <UserButtonGroup />,
+      <GreenCard/>
     ),
     createData(
       <UserTableProfile name="Koré Germaine Groguh.." />,
-      <UserButtonGroup />
+      <UserButtonGroup />,
+    
     ),
     createData(
       <UserTableProfile name="Koré Germaine Groguh.." />,
@@ -245,6 +287,7 @@ export default function StickyHeadTable() {
                   align="center"
                 >
                   {column.label}
+                
                 </TableCell>
               ))}
             </TableRow>
@@ -257,25 +300,32 @@ export default function StickyHeadTable() {
                     {row.name}
                   </TableCell>
                   <TableCell key={i} align="center">
-                    {row.code}
+                    {/* {row.code} */}
+                    {/* {row.GreenCard} */}
+                  </TableCell>
+                  <TableCell key={i} align="center">
+                    {/* {row.code} */}
+                    {row.GreenCard}
                   </TableCell>
                   <TableCell key={i} align="center">
                     {row.code}
+                    {row.GreenCard}
                   </TableCell>
                   <TableCell key={i} align="center">
                     {row.code}
+                    {row.GreenCard}
                   </TableCell>
                   <TableCell key={i} align="center">
                     {row.code}
+                    {row.GreenCard}
                   </TableCell>
                   <TableCell key={i} align="center">
                     {row.code}
+                    {row.GreenCard}
                   </TableCell>
                   <TableCell key={i} align="center">
                     {row.code}
-                  </TableCell>
-                  <TableCell key={i} align="center">
-                    {row.code}
+                    {row.GreenCard}
                   </TableCell>
                   <TableCell key={i} align="center">
                     {/* {row.code} */}

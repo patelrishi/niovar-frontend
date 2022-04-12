@@ -137,6 +137,11 @@ const DashboardMain = () => {
         },
       },
     },
+    name:{
+      "&>div":{
+        height: 50,
+      }
+    }
   }));
 
   const classes = useStyles();
@@ -208,7 +213,7 @@ const DashboardMain = () => {
               <TextField
                 id="outlined-basic"
                 label="Employee Name"
-                style={{ height: 50 }}
+                className={classes.name}
               />
 
               <div className={classes.date}>
